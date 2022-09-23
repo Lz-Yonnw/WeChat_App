@@ -10,7 +10,7 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 /**
- * 微信支付业务层
+ * 微信业务层
  * @author liaozan8888@163.com
  */
 public class WeChatService {

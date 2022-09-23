@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.dj.pointfinger.service.WeChatService;
+import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -24,7 +25,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.pay_result);
+        //实例化
         iwxapi = WXAPIFactory.createWXAPI(this, WeChatService.APP_ID);
         iwxapi.handleIntent(getIntent(), this);
     }
@@ -39,7 +40,11 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     public void onResp(BaseResp baseResp) {
         switch (baseResp.getType()){
-
+            case ConstantsAPI.COMMAND_SENDAUTH: //授权回调
+                break;
+            case ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX://分享回调
+                break;
         }
+        finish();
     }
 }
